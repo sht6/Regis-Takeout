@@ -71,16 +71,16 @@
                 async btnLogin(){
                     if(this.form.phone && this.form.code){
                         this.loading = true
-                        const res = await loginApi({phone:this.form.phone})
-                        this.loading = false
-                        if(res.code === 1){
+                    await loginApi({phone:this.form.phone,code:this.form.code})
+                        // this.loading = false
+                        // if(res.code === 1){
                             sessionStorage.setItem("userPhone",this.form.phone)
                             window.requestAnimationFrame(()=>{
                                 window.location.href= '/front/index.html'
                             })                           
-                        }else{
-                            this.$notify({ type:'warning', message:res.msg});
-                        }
+                        // }else{
+                        //     this.$notify({ type:'warning', message:res.msg});
+                        // }
                     }else{
                         this.$notify({ type:'warning', message:'请输入手机号码'});
                     }
